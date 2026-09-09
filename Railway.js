@@ -197,20 +197,11 @@ function afficherMenu()
         7. Trier les trajets 
         0. Quitter `);
     }
-while (true) {
-    afficherMenu();
 
-    let choix = Number(prompt('Votre choix : '));
-
-    if (choix === 0) {
-        console.log('Au revoir!!');
-        break;
-    }
-
-    switch (choix) {
-        case 1:
+function AfficherTrajets () {
+    console.log('=== TRAJETS DISPONIBLES === ')
             for (let i = 0; i < trips.length; i++) {
-                console.log(`
+                console.log(` 
                 id: ${trips[i].id}
                 departure: ${trips[i].departure}
                 destination: ${trips[i].destination}
@@ -220,6 +211,35 @@ while (true) {
                 availableSeats: ${trips[i].availableSeats}
                 `);
             }
-            break;
+}
+function AcheterTicket(){
+    let Fullname= (prompt('Entrer ton nom : '))
+    let uid=Number (prompt("Entrer L'id de Trajet : "))
+    let id_exist = false
+    let trip;
+    
+    for (let i = 0 ; i < trips.length ; i++) {
+        if (uid === trips[i].id){
+            id_exist = true;
+            trip = trips[i];
+        } 
+        // if ()
+    }
+    if(id_exist == false){
+        console.log('Trajet introuvable !')
     }
 }
+let choix;
+do{
+    afficherMenu();
+    choix = Number(prompt('Votre choix : '));
+    switch (choix) {
+        case 1:
+            AfficherTrajets();
+            break;
+        case 2:
+            AcheterTicket();
+            break;
+        
+        }
+    }while(choix != 0); 
