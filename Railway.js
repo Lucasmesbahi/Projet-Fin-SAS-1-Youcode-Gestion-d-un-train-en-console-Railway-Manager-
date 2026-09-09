@@ -222,8 +222,13 @@ function AcheterTicket(){
         if (uid === trips[i].id){
             id_exist = true;
             trip = trips[i];
+             if (trip.availableSeats == 0  || trip.availableSeats < 0) {
+            console.log(`Train complet.`)
+         }
+         else {
+            
+         }
         } 
-        // if ()
     }
     if(id_exist == false){
         console.log('Trajet introuvable !')
