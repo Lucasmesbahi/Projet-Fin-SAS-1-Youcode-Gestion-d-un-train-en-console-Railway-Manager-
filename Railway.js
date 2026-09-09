@@ -212,22 +212,33 @@ function AfficherTrajets () {
                 `);
             }
 }
+const tickets = []; 
 function AcheterTicket(){
     let Fullname= (prompt('Entrer ton nom : '))
     let uid=Number (prompt("Entrer L'id de Trajet : "))
     let id_exist = false
     let trip;
-    
+    let ticketid= 1
     for (let i = 0 ; i < trips.length ; i++) {
         if (uid === trips[i].id){
             id_exist = true;
             trip = trips[i];
-             if (trip.availableSeats == 0  || trip.availableSeats < 0) {
+            if (trip.availableSeats == 0  || trip.availableSeats < 0) {
             console.log(`Train complet.`)
          }
-         else {
-            
-         }
+            else {
+                for (let i=0 ; i <= tickets.length ; i++) {
+                tickets.push({id : ticketid ,
+                    passangerName : Fullname ,
+                    tripId : uid , 
+                    price : trips[(uid) - 1].price ,
+                    seatNumber : (50) - (trips[uid-1].availableSeats) + 1
+                }) 
+                trips[uid-1].availableSeats -- 
+                ticketid ++
+                }
+                console.log(tickets)
+            }
         } 
     }
     if(id_exist == false){
