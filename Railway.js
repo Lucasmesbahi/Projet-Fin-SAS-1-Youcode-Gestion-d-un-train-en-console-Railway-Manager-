@@ -1,24 +1,5 @@
 const  prompt = require('prompt-sync')();
-function afficherMenu() 
-{
-        console.log(`1. Afficher les trajets 
-        2. Acheter un ticket 
-        3. Afficher les tickets 
-        4. Annuler un ticket 
-        5. Rechercher un ticket 
-        6. Filtrer les trajets 
-        7. Trier les trajets 
-        0. Quitter 
-                    `);
-    }
-while(true) {
-     afficherMenu();
-     let choix = Number(prompt('Votre choix :'));
 
-     if (choix === 0) {
-        break ; 
-     }
-}
 const trips = [
     {
         id: 1,
@@ -201,4 +182,44 @@ const trips = [
         availableSeats: 50
     }
 ];
-console.log(trips[5])
+function afficherMenu() 
+{
+        console.log(`
+        ================================= 
+                RAILWAY MANAGER 
+        ================================= 
+        1. Afficher les trajets 
+        2. Acheter un ticket 
+        3. Afficher les tickets 
+        4. Annuler un ticket 
+        5. Rechercher un ticket 
+        6. Filtrer les trajets 
+        7. Trier les trajets 
+        0. Quitter `);
+    }
+while (true) {
+    afficherMenu();
+
+    let choix = Number(prompt('Votre choix : '));
+
+    if (choix === 0) {
+        console.log('Au revoir!!');
+        break;
+    }
+
+    switch (choix) {
+        case 1:
+            for (let i = 0; i < trips.length; i++) {
+                console.log(`
+                id: ${trips[i].id}
+                departure: ${trips[i].departure}
+                destination: ${trips[i].destination}
+                departureTime: ${trips[i].departureTime}
+                arrivalTime: ${trips[i].arrivalTime}
+                price: ${trips[i].price}
+                availableSeats: ${trips[i].availableSeats}
+                `);
+            }
+            break;
+    }
+}
