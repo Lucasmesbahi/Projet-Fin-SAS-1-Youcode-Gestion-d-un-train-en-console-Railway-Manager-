@@ -212,7 +212,9 @@ function AfficherTrajets () {
                 `);
             }
 }
+
 let tickets = []; 
+
 function AcheterTicket(){
     let Fullname= (prompt('Entrer ton nom : '));
     let tripId=Number (prompt("Entrer L'id de Trajet : "));
@@ -247,6 +249,7 @@ function AcheterTicket(){
         console.log('Trajet introuvable !')
     }
 }
+
 function Afficherticket() {
     if (tickets.length <= 0 ){
         console.log('Aucun ticket enregistré.')
@@ -265,18 +268,25 @@ function Afficherticket() {
         }
     }
 }
-function AnnulerTickets () {
-    let recherche=Number (prompt("Entrez L'id de votre ticket : "));
-for (let i=0 ; i <tickets.length ; i++ ){
-    if (recherche != tickets[i].id){
-        console.log('Ticket introuvable.');
-    }
-    else {
 
+function AnnulerTickets () {
+        let removeticket=Number (prompt("Entrez L'id de votre ticket : "));
+    for (let i=0 ; i <tickets.length ; i++ ){
+        if (removeticket != tickets[i].id){
+            console.log('Ticket introuvable.');
+        }
+        else {
+            let tripId = tickets[i].tripId;
+            for (let j = 0; j < trips.length; j++) {
+                if (tripId === trips[j].id) {
+                        
+                    }
+                }
     }
 }
 }
 let choix;
+
 do{
     afficherMenu();
     choix = Number(prompt('Votre choix : '));
