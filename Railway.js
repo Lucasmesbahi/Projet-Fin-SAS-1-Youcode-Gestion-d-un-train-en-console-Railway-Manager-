@@ -199,7 +199,7 @@ function afficherMenu()
     }
 
 function AfficherTrajets () {
-    console.log('=== TRAJETS DISPONIBLES === ')
+    console.log('=== TRAJETS DISPONIBLES === ');
             for (let i = 0; i < trips.length; i++) {
                 console.log(` 
                 id: ${trips[i].id}
@@ -212,10 +212,10 @@ function AfficherTrajets () {
                 `);
             }
 }
-const tickets = []; 
+let tickets = []; 
 function AcheterTicket(){
-    let Fullname= (prompt('Entrer ton nom : '))
-    let uid=Number (prompt("Entrer L'id de Trajet : "))
+    let Fullname= (prompt('Entrer ton nom : '));
+    let uid=Number (prompt("Entrer L'id de Trajet : "));
     let id_exist = false
     let trip;
     let ticketid= 1
@@ -227,17 +227,20 @@ function AcheterTicket(){
             console.log(`Train complet.`)
          }
             else {
-                for (let i=0 ; i <= tickets.length ; i++) {
                 tickets.push({id : ticketid ,
                     passangerName : Fullname ,
                     tripId : uid , 
-                    price : trips[(uid) - 1].price ,
+                    price : trip.price ,
                     seatNumber : (50) - (trips[uid-1].availableSeats) + 1
                 }) 
-                trips[uid-1].availableSeats -- 
-                ticketid ++
-                }
-                console.log(tickets)
+                trip.availableSeats -- 
+                ticketid++
+                console.log(`Ticket acheter avec succès.
+                    Ticket #${tickets.length}
+                    Passager : ${tickets.passangerName}
+                    Trajet : ${trip.departure} → ${trip.destination}
+                    place : ${tickets.seatNumber}
+                    prix : ${trip.price}`)
             }
         } 
     }
@@ -256,6 +259,7 @@ do{
         case 2:
             AcheterTicket();
             break;
-        
+        case 3:
+
         }
     }while(choix != 0); 
