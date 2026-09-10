@@ -222,7 +222,7 @@ function AcheterTicket(){
         if (tripId === trips[i].id){
             id_exist = true;
             trip = trips[i];
-            if (trip.availableSeats == 0  || trip.availableSeats < 0) {
+            if (trip.availableSeats <= 0 ) {
             console.log(`Train complet.`)
          }
             else {
@@ -248,16 +248,21 @@ function AcheterTicket(){
     }
 }
 function Afficherticket() {
-    console.log('=== TICKETS === ');
-    for (let i=0 ; i < tickets.length ; i++) {
-        let index=tickets[i].tripId;
-        console.log(`
-        Ticket #${tickets[i].id}
-        Passager : ${tickets[i].passengerName}
-        Trajet : ${trips[index-1].departure} → ${trips[index - 1].destination}
-        Place : ${tickets[i].seatNumber}
-        Prix : ${tickets[i].price} 
-`)
+    if (tickets.length <= 0 ){
+        console.log('Aucun ticket enregistré.')
+    } 
+    else {
+        console.log('=== TICKETS === ');
+        for (let i=0 ; i < tickets.length ; i++) {
+            let index=tickets[i].tripId;
+            console.log(`
+            Ticket #${tickets[i].id}
+            Passager : ${tickets[i].passengerName}
+            Trajet : ${trips[index-1].departure} → ${trips[index - 1].destination}
+            Place : ${tickets[i].seatNumber}
+            Prix : ${tickets[i].price} 
+            `)
+        }
     }
 }
 let choix;
