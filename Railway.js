@@ -265,6 +265,17 @@ function Afficherticket() {
         }
     }
 }
+function AnnulerTickets () {
+    let recherche=Number (prompt("Entrez L'id de votre ticket : "));
+for (let i=0 ; i <tickets.length ; i++ ){
+    if (recherche != tickets[i].id){
+        console.log('Ticket introuvable.');
+    }
+    else {
+
+    }
+}
+}
 let choix;
 do{
     afficherMenu();
@@ -279,5 +290,7 @@ do{
         case 3:
             Afficherticket() ;
             break;
+        case 4 :
+            AnnulerTickets(); 
         }
-    }while(choix != 0); 
+}while(choix != 0); 
