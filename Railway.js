@@ -228,18 +228,19 @@ function AcheterTicket(){
          }
             else {
                 tickets.push({id : ticketid ,
-                    passangerName : Fullname ,
+                    passengerName : Fullname ,
                     tripId : uid , 
                     price : trip.price ,
-                    seatNumber : (50) - (trips[uid-1].availableSeats) + 1
+                    seatNumber : (50) - (trip.availableSeats) + 1
                 }) 
                 trip.availableSeats -- 
                 ticketid++
+                let Newticket = tickets[tickets.length - 1];
                 console.log(`Ticket acheter avec succès.
                     Ticket #${tickets.length}
-                    Passager : ${tickets.passangerName}
+                    Passager : ${Newticket.passengerName}
                     Trajet : ${trip.departure} → ${trip.destination}
-                    place : ${tickets.seatNumber}
+                    place : ${Newticket.seatNumber}
                     prix : ${trip.price}`)
             }
         } 
