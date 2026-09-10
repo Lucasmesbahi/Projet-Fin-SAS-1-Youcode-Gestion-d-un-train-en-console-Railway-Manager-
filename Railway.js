@@ -215,11 +215,11 @@ function AfficherTrajets () {
 let tickets = []; 
 function AcheterTicket(){
     let Fullname= (prompt('Entrer ton nom : '));
-    let uid=Number (prompt("Entrer L'id de Trajet : "));
+    let tripId=Number (prompt("Entrer L'id de Trajet : "));
     let id_exist = false ;
     let trip;
     for (let i = 0 ; i < trips.length ; i++) {
-        if (uid === trips[i].id){
+        if (tripId === trips[i].id){
             id_exist = true;
             trip = trips[i];
             if (trip.availableSeats == 0  || trip.availableSeats < 0) {
@@ -228,7 +228,7 @@ function AcheterTicket(){
             else {
                 tickets.push({id : tickets.length + 1 ,
                     passengerName : Fullname ,
-                    tripId : uid , 
+                    tripId : tripId , 
                     price : trip.price ,
                     seatNumber : (50) - (trip.availableSeats) + 1
                 }) 
@@ -248,7 +248,17 @@ function AcheterTicket(){
     }
 }
 function Afficherticket() {
-    console.log(tickets)
+    console.log('=== TICKETS === ');
+    for (let i=0 ; i < tickets.length ; i++) {
+        let index=tickets[i].tripId;
+        console.log(`
+        Ticket #${tickets[i].id}
+        Passager : ${tickets[i].passengerName}
+        Trajet : ${trips[index-1].departure} → ${trips[index - 1].destination}
+        Place : ${tickets[i].seatNumber}
+        Prix : ${tickets[i].price} 
+`)
+    }
 }
 let choix;
 do{
