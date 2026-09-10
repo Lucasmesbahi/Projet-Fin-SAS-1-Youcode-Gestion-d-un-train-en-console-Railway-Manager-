@@ -216,9 +216,8 @@ let tickets = [];
 function AcheterTicket(){
     let Fullname= (prompt('Entrer ton nom : '));
     let uid=Number (prompt("Entrer L'id de Trajet : "));
-    let id_exist = false
+    let id_exist = false ;
     let trip;
-    let ticketid= 1
     for (let i = 0 ; i < trips.length ; i++) {
         if (uid === trips[i].id){
             id_exist = true;
@@ -227,17 +226,16 @@ function AcheterTicket(){
             console.log(`Train complet.`)
          }
             else {
-                tickets.push({id : ticketid ,
+                tickets.push({id : tickets.length + 1 ,
                     passengerName : Fullname ,
                     tripId : uid , 
                     price : trip.price ,
                     seatNumber : (50) - (trip.availableSeats) + 1
                 }) 
-                trip.availableSeats -- 
-                ticketid++
+                trip.availableSeats --
                 let Newticket = tickets[tickets.length - 1];
                 console.log(`Ticket acheter avec succès.
-                    Ticket #${tickets.length}
+                    Ticket #${Newticket.id}
                     Passager : ${Newticket.passengerName}
                     Trajet : ${trip.departure} → ${trip.destination}
                     place : ${Newticket.seatNumber}
@@ -248,6 +246,9 @@ function AcheterTicket(){
     if(id_exist == false){
         console.log('Trajet introuvable !')
     }
+}
+function Afficherticket() {
+    console.log(tickets)
 }
 let choix;
 do{
@@ -261,6 +262,7 @@ do{
             AcheterTicket();
             break;
         case 3:
-
+            Afficherticket() ;
+            break;
         }
     }while(choix != 0); 
