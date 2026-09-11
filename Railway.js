@@ -352,23 +352,27 @@ function Filtrationdestrajets() {
         console.log(`Aucun trajet trouvé`)
     }
 }
-let max;
 function Filtragedestickets() {
-    const tri= []
-    for (let i=0 ; i <= trips.length ; i++) {
+
+    const tri = []
+    let max;
+
+    for (let i = 0; i < trips.length; i++) {
         tri.push(trips[i])
     }
-    for (let i=0 ; i <= tri.length ; i++) {
-        max = tri[0].price
-        for (let j=0 ; j<= tri.length ; j++){
-            if (tri[i+1] < tri[i]);
-            max=tri[i];
-            tri[i]=tri[i+1];
-            tri[i+1]=max;
+    for (let i = 0; i < tri.length - 1; i++) {
+        for (let j = 0; j < tri.length - 1; j++) {
+            if (tri[j+1].price < tri[j].price) {
+                max = tri[j];
+                tri[j] = tri[j+1];
+                tri[j+1] = max;
+            }
         }
     }
+    for (let i = 0; i < tri.length; i++) {
+        console.log(`${tri[i].departure} → ${tri[i].destination} : ${tri[i].price} DH`)
+    }
 }
-
 let choix;
 
 do{
@@ -395,6 +399,7 @@ do{
             break;
         case 7:
             Filtragedestickets();
+            break;
         }    
 }
 while(choix != 0); 
