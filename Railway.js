@@ -213,9 +213,9 @@ function AfficherTrajets () {
             }
 }
 
-let tickets = []; 
+const tickets = []; 
 let ticketId=0;
-let cancelledtickets= [] ;
+const cancelledtickets= [] ;
 
 function AcheterTicket(){
     let Fullname= (prompt('Entrer ton nom : '));
@@ -352,6 +352,22 @@ function Filtrationdestrajets() {
         console.log(`Aucun trajet trouvé`)
     }
 }
+let max;
+function Filtragedestickets() {
+    const tri= []
+    for (let i=0 ; i <= trips.length ; i++) {
+        tri.push(trips[i])
+    }
+    for (let i=0 ; i <= tri.length ; i++) {
+        max = tri[0].price
+        for (let j=0 ; j<= tri.length ; j++){
+            if (tri[i+1] < tri[i]);
+            max=tri[i];
+            tri[i]=tri[i+1];
+            tri[i+1]=max;
+        }
+    }
+}
 
 let choix;
 
@@ -378,7 +394,7 @@ do{
             Filtrationdestrajets();
             break;
         case 7:
-
+            Filtragedestickets();
         }    
 }
 while(choix != 0); 
