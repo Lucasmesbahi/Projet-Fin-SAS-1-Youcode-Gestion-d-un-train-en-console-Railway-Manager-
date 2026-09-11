@@ -219,6 +219,7 @@ function AcheterTicket(){
     let Fullname= (prompt('Entrer ton nom : '));
     let tripId=Number (prompt("Entrer L'id de Trajet : "));
     let id_exist = false ;
+    let ticketId=0;
     let trip;
     for (let i = 0 ; i < trips.length ; i++) {
         if (tripId === trips[i].id){
@@ -228,7 +229,7 @@ function AcheterTicket(){
             console.log(`Train complet.`)
          }
             else {
-                tickets.push({id : tickets.length + 1 ,
+                tickets.push({id : ++ticketId ,
                     passengerName : Fullname ,
                     tripId : tripId , 
                     price : trip.price ,
@@ -299,8 +300,25 @@ function Rechercherticket() {
             console.log(tickets[i]);
         } 
     }
-    if (trouvernom==false){
+    if (trouvernom == false){
         console.log('Ticket introuvable')
+    }
+}
+function Filtrationdestrajets() {
+    let ville = prompt('Entrez la ville de départ : ');
+    let trajects=false
+    console.log(`Ville de départ : ${ville} 
+    
+    Résultat :
+       `)
+    for (let i=0 ; i < trips.length ; i++){
+        if (ville == trips[i].departure){
+            trajects=true
+            console.log(`${ville} → ${trips[i].destination} : ${trips[i].price} DH`)
+        }
+    }
+    if (trajects==false){
+        console.log(`Aucun trajet trouvé`)
     }
 }
 
@@ -324,6 +342,10 @@ do{
             break;
         case 5:
             Rechercherticket();
+            break;
+        case 6:
+            Filtrationdestrajets();
+            break;
         }    
 }
 while(choix != 0); 
