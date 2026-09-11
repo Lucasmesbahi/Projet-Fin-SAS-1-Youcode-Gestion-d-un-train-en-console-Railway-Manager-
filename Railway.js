@@ -270,20 +270,24 @@ function Afficherticket() {
 }
 
 function AnnulerTickets () {
-        let removeticket=Number (prompt("Entrez L'id de votre ticket : "));
+    let removeticket=Number (prompt("Entrez L'id de votre ticket : "));
+    let trouve=false;
     for (let i=0 ; i <tickets.length ; i++ ){
-        if (removeticket != tickets[i].id){
-            console.log('Ticket introuvable.');
+        if (removeticket == tickets[i].id){
+                const ticket = tickets[i];
+                const trip = trips[ticket.tripId - 1];
+                trip.availableSeats++;
+                tickets.splice(i,1);
+                trouve=true;
+                console.log(`Identifiant du ticket : ${removeticket} 
+                Ticket annulé avec succès.`)
+                break;
         }
-        else {
-            let tripId = tickets[i].tripId;
-            for (let j = 0; j < trips.length; j++) {
-                if (tripId === trips[j].id) {
-                        
-                    }
-                }
     }
-}
+
+     if (trouve==false){
+            console.log('Ticket introuvable.');
+    }
 }
 let choix;
 
