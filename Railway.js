@@ -264,7 +264,7 @@ function Afficherticket() {
             Trajet : ${trips[index-1].departure} → ${trips[index - 1].destination}
             Place : ${tickets[i].seatNumber}
             Prix : ${tickets[i].price} 
-            `)
+            `);
         }
     }
 }
@@ -280,15 +280,30 @@ function AnnulerTickets () {
                 tickets.splice(i,1);
                 trouve=true;
                 console.log(`Identifiant du ticket : ${removeticket} 
-                Ticket annulé avec succès.`)
+                Ticket annulé avec succès.`);
                 break;
         }
     }
 
-     if (trouve==false){
+    if (trouve==false){
             console.log('Ticket introuvable.');
     }
 }
+
+function Rechercherticket() {
+    let reherchenom= (prompt('Entrez le nom de passager : '));
+    let trouvernom=false
+    for (let i=0 ; i < tickets.length ; i++){
+        if (reherchenom == tickets[i].passengerName){
+            trouvernom=true
+            console.log(tickets[i]);
+        } 
+    }
+    if (trouvernom==false){
+        console.log('Ticket introuvable')
+    }
+}
+
 let choix;
 
 do{
@@ -304,7 +319,11 @@ do{
         case 3:
             Afficherticket() ;
             break;
-        case 4 :
-            AnnulerTickets(); 
-        }
-}while(choix != 0); 
+        case 4:
+            AnnulerTickets();
+            break;
+        case 5:
+            Rechercherticket();
+        }    
+}
+while(choix != 0); 
