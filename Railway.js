@@ -215,7 +215,6 @@ function AfficherTrajets () {
 
 const tickets = []; 
 let ticketId=0;
-const cancelledtickets= [] ;
 
 function AcheterTicket(){
     let Fullname= (prompt('Entrer ton nom : '));
@@ -299,7 +298,7 @@ function Afficherticket() {
         }
     }
 }
-
+const cancelledtickets= [] ;
 function AnnulerTickets () {
     let removeticket=Number (prompt("Entrez L'id de votre ticket : "));
     let trouve=false;
@@ -363,7 +362,7 @@ function Filtragedestickets() {
     for (let i = 0; i < tri.length - 1; i++) {
         for (let j = 0; j < tri.length - 1; j++) {
             if (tri[j+1].price < tri[j].price) {
-                max = tri[j];
+                max = tri[j]; 
                 tri[j] = tri[j+1];
                 tri[j+1] = max;
             }
